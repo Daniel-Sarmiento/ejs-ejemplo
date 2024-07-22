@@ -1,0 +1,290 @@
+{
+	"Comprobante": {
+		"CfdiRelacionados": {
+			"CfdiRelacionado": {
+				"UUID": "2C202B28-659F-4372-A33C-81B450A9D3B8",
+				"prefix": "cfdi"
+			},
+			"TipoRelacion": "05",
+			"prefix": "cfdi"
+		},
+		"Emisor": {
+			"Rfc": "REI860217837",
+			"Nombre": "REIMART, S.A. DE C.V.",
+			"RegimenFiscal": "601",
+			"prefix": "cfdi"
+		},
+		"Receptor": {
+			"Rfc": "DLI931201MI9",
+			"Nombre": "DISTRIBUIDORA LIVERPOOL, S.A. DE C.V.",
+			"UsoCFDI": "P01",
+			"prefix": "cfdi"
+		},
+		"Conceptos": {
+			"Concepto": [
+				{
+					"ClaveProdServ": "52152104",
+					"NoIdentificacion": "7501562943826",
+					"Cantidad": "156",
+					"ClaveUnidad": "H87",
+					"Unidad": "pz",
+					"Descripcion": "COPA VINO BLANCO 350 ml EMMA",
+					"ValorUnitario": "0",
+					"Importe": "0",
+					"prefix": "cfdi"
+				},
+				{
+					"ClaveProdServ": "52152104",
+					"NoIdentificacion": "7501562943857",
+					"Cantidad": "138",
+					"ClaveUnidad": "H87",
+					"Unidad": "pz",
+					"Descripcion": "COPA CHAMPAGNE 260 ml EMMA",
+					"ValorUnitario": "0",
+					"Importe": "0",
+					"prefix": "cfdi"
+				},
+				{
+					"ClaveProdServ": "52152102",
+					"NoIdentificacion": "7501562947138",
+					"Cantidad": "21",
+					"ClaveUnidad": "H87",
+					"Unidad": "pz",
+					"Descripcion": "SET 12 VASO HB + OF 330-440 ML UMA",
+					"ValorUnitario": "0",
+					"Importe": "0",
+					"prefix": "cfdi"
+				},
+				{
+					"ClaveProdServ": "52152102",
+					"NoIdentificacion": "7501562947121",
+					"Cantidad": "4",
+					"ClaveUnidad": "H87",
+					"Unidad": "pz",
+					"Descripcion": "SET 6 VASOS + 2 VASOS HB 440 ML UMA",
+					"ValorUnitario": "0",
+					"Importe": "0",
+					"prefix": "cfdi"
+				},
+				{
+					"ClaveProdServ": "52152102",
+					"NoIdentificacion": "7501562946643",
+					"Cantidad": "9",
+					"ClaveUnidad": "H87",
+					"Unidad": "pz",
+					"Descripcion": "VASO HIGH BALL 480 ml JIVE",
+					"ValorUnitario": "0",
+					"Importe": "0",
+					"prefix": "cfdi"
+				},
+				{
+					"ClaveProdServ": "52152102",
+					"NoIdentificacion": "7501562938761",
+					"Cantidad": "78",
+					"ClaveUnidad": "H87",
+					"Unidad": "pz",
+					"Descripcion": "VASO TEQUILERO 60 ml JIVE",
+					"ValorUnitario": "0",
+					"Importe": "0",
+					"prefix": "cfdi"
+				}
+			]
+		},
+		"Complemento": {
+			"CartaPorte": {
+				"Ubicaciones": {
+					"Ubicacion": [
+						{
+							"Domicilio": {
+								"Calle": "IRRIGACION",
+								"NumeroExterior": "75",
+								"Colonia": "7912",
+								"Localidad": "14",
+								"Municipio": "104",
+								"Estado": "MEX",
+								"Pais": "MEX",
+								"CodigoPostal": "54090",
+								"prefix": "cartaporte20"
+							},
+							"TipoUbicacion": "Origen",
+							"RFCRemitenteDestinatario": "REI860217837",
+							"NombreRemitenteDestinatario": "REIMART, S.A. DE C.V.",
+							"FechaHoraSalidaLlegada": "2021-12-14T10:11:04",
+							"prefix": "cartaporte20"
+						},
+						{
+							"Domicilio": {
+								"Calle": "PROLONGACION VASCO DE QUIROGA 4800 TORRE 2 PISO 3",
+								"Colonia": "0792",
+								"Localidad": "05",
+								"Municipio": "004",
+								"Estado": "DIF",
+								"Pais": "MEX",
+								"CodigoPostal": "05348",
+								"prefix": "cartaporte20"
+							},
+							"TipoUbicacion": "Destino",
+							"RFCRemitenteDestinatario": "DLI931201MI9",
+							"NombreRemitenteDestinatario": "DISTRIBUIDORA LIVERPOOL, S.A. DE C.V.",
+							"FechaHoraSalidaLlegada": "2021-12-14T20:00:00",
+							"DistanciaRecorrida": "25.9000",
+							"prefix": "cartaporte20"
+						}
+					],
+					"prefix": "cartaporte20"
+				},
+				"Mercancias": {
+					"Mercancia": [
+						{
+							"Pedimentos": {
+								"Pedimento": "18 43 3948 8001495",
+								"prefix": "cartaporte20"
+							},
+							"BienesTransp": "52152104",
+							"Descripcion": "COPA VINO BLANCO 350 ml EMMA",
+							"Cantidad": "156.0000",
+							"ClaveUnidad": "H87",
+							"PesoEnKg": "31.2000",
+							"prefix": "cartaporte20"
+						},
+						{
+							"Pedimentos": {
+								"Pedimento": "18 43 3948 8001495",
+								"prefix": "cartaporte20"
+							},
+							"BienesTransp": "52152104",
+							"Descripcion": "COPA CHAMPAGNE 260 ml EMMA",
+							"Cantidad": "138.0000",
+							"ClaveUnidad": "H87",
+							"PesoEnKg": "20.7000",
+							"prefix": "cartaporte20"
+						},
+						{
+							"Pedimentos": {
+								"Pedimento": "19 43 3948 9000422",
+								"prefix": "cartaporte20"
+							},
+							"BienesTransp": "52152102",
+							"Descripcion": "SET 12 VASO HB + OF 330-440 ML UMA",
+							"Cantidad": "21.0000",
+							"ClaveUnidad": "H87",
+							"PesoEnKg": "60.9000",
+							"prefix": "cartaporte20"
+						},
+						{
+							"Pedimentos": {
+								"Pedimento": "19 43 3948 9000422",
+								"prefix": "cartaporte20"
+							},
+							"BienesTransp": "52152102",
+							"Descripcion": "SET 6 VASOS + 2 VASOS HB 440 ML UMA",
+							"Cantidad": "4.0000",
+							"ClaveUnidad": "H87",
+							"PesoEnKg": "8.0000",
+							"prefix": "cartaporte20"
+						},
+						{
+							"Pedimentos": {
+								"Pedimento": "19 43 3948 9000235",
+								"prefix": "cartaporte20"
+							},
+							"BienesTransp": "52152102",
+							"Descripcion": "VASO HIGH BALL 480 ml JIVE",
+							"Cantidad": "9.0000",
+							"ClaveUnidad": "H87",
+							"PesoEnKg": "2.2500",
+							"prefix": "cartaporte20"
+						},
+						{
+							"Pedimentos": {
+								"Pedimento": "19 43 3948 9000235",
+								"prefix": "cartaporte20"
+							},
+							"BienesTransp": "52152102",
+							"Descripcion": "VASO TEQUILERO 60 ml JIVE",
+							"Cantidad": "78.0000",
+							"ClaveUnidad": "H87",
+							"PesoEnKg": "2.3400",
+							"prefix": "cartaporte20"
+						}
+					],
+					"Autotransporte": {
+						"IdentificacionVehicular": {
+							"ConfigVehicular": "VL",
+							"PlacaVM": "C85BBM",
+							"AnioModeloVM": "2019",
+							"prefix": "cartaporte20"
+						},
+						"Seguros": {
+							"AseguraRespCivil": "BANORTE SEGUROS",
+							"PolizaRespCivil": "3066719",
+							"prefix": "cartaporte20"
+						},
+						"PermSCT": "TPAF02",
+						"NumPermisoSCT": "00000000",
+						"prefix": "cartaporte20"
+					},
+					"PesoBrutoTotal": "125.3900",
+					"UnidadPeso": "KGM",
+					"NumTotalMercancias": "6",
+					"prefix": "cartaporte20"
+				},
+				"FiguraTransporte": {
+					"TiposFigura": {
+						"Domicilio": {
+							"Colonia": "2697",
+							"Localidad": "14",
+							"Municipio": "104",
+							"Estado": "MEX",
+							"Pais": "MEX",
+							"CodigoPostal": "54108",
+							"prefix": "cartaporte20"
+						},
+						"TipoFigura": "01",
+						"RFCFigura": "MABL821201QA8",
+						"NumLicencia": "010000609098",
+						"NombreFigura": "LUIS MIGUEL MANJARREZ BADILLO",
+						"prefix": "cartaporte20"
+					},
+					"prefix": "cartaporte20"
+				},
+				"Version": "2.0",
+				"TranspInternac": "No",
+				"TotalDistRec": "25.9000",
+				"prefix": "cartaporte20"
+			},
+			"TimbreFiscalDigital": {
+				"xmlns:tfd": "http://www.sat.gob.mx/TimbreFiscalDigital",
+				"xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+				"RfcProvCertif": "TSP080724QW6",
+				"Version": "1.1",
+				"UUID": "35C464BF-CC4A-4AB9-B868-C09F5F2FD0F8",
+				"FechaTimbrado": "2021-12-14T10:11:47",
+				"SelloCFD": "mgPURqiL6NjSOvXVo/sYb+3UqgkgC+lZKMwZKq7ENaep4xaExq1eJ2Hp7GJ03WU+bBAwqFvZGtuJplhCXBSNI1N5Oes6F+K9g3gLfKAOUTE1XCWOcLy40TytZs3+1uORn2aZOi62AsWtIog6LHAZKJATg5We25PhNSWvuOJG/dxOlg2OmgPdKHYKYDgiTMLMUZfiPb4sJvhM8xuaGMRKh2+ndUD9XnLhx8xmdEkMgzsOrlUGRnm5oR/QZCFOHZi7m1uOzIpSRKBbt9SwRB53DSAFjZsgi0A8w/TFPd8LoWsn/NA9UpRIJlX+MtZqd4OphiNYqzAR35UDHc3kS6JXFg==",
+				"NoCertificadoSAT": "00001000000501960426",
+				"SelloSAT": "CG+kX0zRrbx2sV6a09yz51PC7P+ZNVYtG3oOokUyKhqu5GXsWCwbee3nY74zQldMtskxKXLkwAgnetaQ3dcVRNFon2s2RFEYWbjASfJU/IjA3/rJk+GfOUeMqnAcAUH1dNGDxqWUewVu+/TS59ALzAVjm+XyypufhVuM8scR96hSQKFGYbx4L2xwaTBugDbDXT7xVD3RooZdbLgBpAhA0noAqls/zD3xZ34AmJrENXaap8+LPctKlbqaSVJtMDY0/5g87GkIEKq/4R4uYDO81BqkxKXTsdS8rfi78mGcpr1Spag5aWcL3LXuIwmsBg4MUicRXvshx7k/46Y5F+4LRA==",
+				"xsi:schemaLocation": "http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitiointernet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd",
+				"prefix": "tfd"
+			},
+			"prefix": "cfdi"
+		},
+		"xmlns:xs": "http://www.w3.org/2001/XMLSchema",
+		"xmlns:cfdi": "http://www.sat.gob.mx/cfd/3",
+		"xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+		"xmlns:cartaporte20": "http://www.sat.gob.mx/CartaPorte20",
+		"xsi:schemaLocation": "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitiointernet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitiointernet/cfd/CartaPorte/CartaPorte20.xsd",
+		"Version": "3.3",
+		"Serie": "TRA",
+		"Folio": "5",
+		"Fecha": "2021-12-14T10:11:43",
+		"NoCertificado": "00001000000504867694",
+		"Certificado": "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",
+		"SubTotal": "0",
+		"Moneda": "XXX",
+		"Total": "0",
+		"TipoDeComprobante": "T",
+		"LugarExpedicion": "54090",
+		"Sello": "mgPURqiL6NjSOvXVo/sYb+3UqgkgC+lZKMwZKq7ENaep4xaExq1eJ2Hp7GJ03WU+bBAwqFvZGtuJplhCXBSNI1N5Oes6F+K9g3gLfKAOUTE1XCWOcLy40TytZs3+1uORn2aZOi62AsWtIog6LHAZKJATg5We25PhNSWvuOJG/dxOlg2OmgPdKHYKYDgiTMLMUZfiPb4sJvhM8xuaGMRKh2+ndUD9XnLhx8xmdEkMgzsOrlUGRnm5oR/QZCFOHZi7m1uOzIpSRKBbt9SwRB53DSAFjZsgi0A8w/TFPd8LoWsn/NA9UpRIJlX+MtZqd4OphiNYqzAR35UDHc3kS6JXFg==",
+		"prefix": "cfdi"
+	}
+}

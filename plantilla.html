@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura CFDI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto';
+        }
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+        .header, .content, .footer {
+            margin-bottom: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Alinea elementos a la izquierda */
+            text-align: center;
+            border-bottom: 2px solid #C3CBD8; /* Línea divisoria debajo del header */
+            padding: 20px 0; /* Espaciado interno del header */
+        }
+
+        .header img {
+            width: 200px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+            height: auto; /* Ajusta la altura automáticamente */
+            margin-right: 800px; /* Espacio entre la imagen y la tabla */
+            margin-top: 10px;
+            display: block; /* Asegura que la imagen se comporte como un bloque */
+        }
+
+        .left-align-table-container {
+            width: 100%; /* Ancho completo para ocupar todo el espacio restante */
+            margin-top: 20px; /* Espacio entre la imagen y la tabla */
+            padding-top: 20px; /* Espacio adicional arriba de la tabla */
+        }
+
+        .left-align-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .left-align-table th, .left-align-table td {
+            padding: 8px;
+            text-align: left;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            border: 1px solid #9FA8B9;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th.no-border {
+            border: none;
+            background-color: transparent;
+            color: #374254;
+        }
+        .table td.no-border {
+            border: none;
+        }
+        .table th {
+            padding: 8px;
+            text-align: left;
+            background-color: #E7E9F3;
+            color: #0E1623;
+        }
+        .table td {
+            padding: 8px;
+            text-align: left;
+        }
+        .right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="left-align-table-container">
+                <table class="left-align-table">
+                    <tr>
+                        <th colspan="2">RFC emisor:</th>
+                        <td colspan="2"><%= Comprobante.Emisor.Rfcs %></td>
+                        <th colspan="2">Folio fiscal:</th>
+                        <td colspan="2"><%= Comprobante.Complemento.TimbreFiscalDigital.UUID %></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Nombre emisor:</th>
+                        <td colspan="2"><%= Comprobante.Emisor.Nombre %></td>
+                        <th colspan="2">No. de serie del CSD</th>
+                        <td colspan="2"><%= Comprobante.NoCertificado %></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Folio:</th>
+                        <td colspan="2"><%= Comprobante.Folio %></td>
+                        <th colspan="2">Serie:</th>
+                        <td colspan="2"><%= Comprobante.Serie %></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">RFC receptor:</th>
+                        <td colspan="2"><%= Comprobante.Receptor.Rfc %></td>
+                        <th colspan="2">Código postal, fecha y hora de emisión:</th>
+                        <td colspan="2"><%= Comprobante.LugarExpedicion %> <%= Comprobante.Fecha %></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Nombre receptor:</th>
+                        <td colspan="2"><%= Comprobante.Receptor.Nombre %></td>
+                        <th colspan="2">Efecto de comprobante:</th>
+                        <td colspan="2"><%= Comprobante.TipoDeComprobante %></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Código postal del receptor:</th>
+                        <td colspan="2"><%= Comprobante.DomicilioFiscalReceptor %></td>
+                        <th colspan="2">Régimen fiscal:</th>
+                        <td colspan="2"><%= Comprobante.Emisor.RegimenFiscal %></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Régimen fiscal receptor:</th>
+                        <td colspan="2"><%= Comprobante.Receptor.RegimenFiscalReceptor %></td>
+                        <th colspan="2">Exportación:</th>
+                        <td colspan="2"><%= Comprobante.Exportacion %></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Uso CFDI:</th>
+                        <td colspan="2"><%= Comprobante.Receptor.UsoCFDI %></td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <% if(Comprobante.CfdiRelacionados.length > 0) { %>
+                <h2>Cfdis Relacionados </h2>
+            
+                <br>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>UUID</th>
+                        <th>Tipo Relación</th>
+                    </tr>
+                    <% for(var i = 0; i < Comprobante.CfdiRelacionados.CfdiRelacionado.length; i++){ %>
+                        <tr>
+                            <td><%= Comprobante.CfdiRelacionados.CfdiRelacionado[i].UUID %></td>
+                            <td><%= Comprobante.CfdiRelacionados.TipoRelacion %></td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            <% } %>
+            <h2>Conceptos</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Clave del producto y/o servicio</th>
+                        <th>No. identificación</th>
+                        <th>Cantidad</th>
+                        <th>Clave de unidad</th>
+                        <th>Unidad</th>
+                        <th>Valor unitario</th>
+                        <th>Importe</th>
+                        <th>Descuento</th>
+                        <th>Objeto impuesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < Comprobante.Conceptos.Concepto.length; i++){ %>
+                        <tr>
+                            <td><%= Comprobante.Conceptos.Concepto[i].ClaveProdServ %></td>
+                            <td><%= Comprobante.Conceptos.Concepto[i].NoIdentificacion %></td>
+                            <td><%= Comprobante.Conceptos.Concepto[i].Cantidad %></td>
+                            <td><%= Comprobante.Conceptos.Concepto[i].Unidad %></td>
+                            <td><%= Comprobante.Conceptos.Concepto[i].ClaveUnidad %></td>
+                            <td class="right"><%= Comprobante.Conceptos.Concepto[i].ValorUnitario%></td>
+                            <td class="right"><%= Comprobante.Conceptos.Concepto[i].Importe %></td>
+                            <td class="right"><%= Comprobante.Conceptos.Concepto[i].Descuento %></td>
+                            <td><%= Comprobante.Conceptos.Concepto[i].ObjetoImp %></td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">Descripción</th>
+                            <td colspan="2" rowspan="2"><%= Comprobante.Conceptos.Concepto[i].Descripcion %></td>
+                            <th class="no-border">Impuesto</th>
+                            <th class="no-border">Tipo</th>
+                            <th class="no-border">Base</th>
+                            <th class="no-border">Tipo Factor</th>
+                            <th class="no-border">Tasa o cuota</th>
+                            <th class="no-border">Importe</th>
+                            <tr>
+                                <% if(Comprobante.Conceptos.Concepto[i].Impuestos) { %>
+                                <td class="no-border"><%= Comprobante.Conceptos.Concepto[i].Impuestos.Traslados.Traslado.Impuesto %></td>
+                                <td class="no-border">Traslados</td>
+                                <td class="no-border"><%= Comprobante.Conceptos.Concepto[i].Impuestos.Traslados.Traslado.Base %></td>
+                                <td class="no-border"><%= Comprobante.Conceptos.Concepto[i].Impuestos.Traslados.Traslado.TipoFactor %></td>
+                                <td class="no-border"><%= Comprobante.Conceptos.Concepto[i].Impuestos.Traslados.Traslado.TasaOCuota %></td>
+                                <td class="no-border"><%= Comprobante.Conceptos.Concepto[i].Impuestos.Traslados.Traslado.Importe %></td>
+                                <% } else { %>
+                                    <td class="no-border"></td>
+                                    <td class="no-border"></td>
+                                    <td class="no-border"></td>
+                                    <td class="no-border"></td>
+                                    <td class="no-border"></td>
+                                    <td class="no-border"></td>
+                                <% } %>
+                            </tr>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="height: 20px;">Número de Pedimento</th>
+                            <th colspan="2" style="height: 20px;">Número de Cuenta Predial</th>
+                            <th class="no-border"></th>
+                            <th class="no-border"></th>
+                            <th class="no-border"></th>
+                            <th class="no-border"></th>
+                            <th class="no-border"></th>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 20px;"><%= Comprobante.Complemento.CartaPorte.Mercancias.Mercancia[i].Pedimentos.Pedimento %></td>
+                            <td colspan="2" style="height: 20px;"><%= Comprobante.Complemento.CartaPorte.Mercancias.Mercancia[i].Pedimentos.Pedimento %></td>
+                            <td class="no-border"></td>
+                            <td class="no-border"></td>
+                            <td class="no-border"></td>
+                            <td class="no-border"></td>
+                            <td class="no-border"></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <% if(Comprobante.TipoDeComprobante ==='P') { %>
+                <h2>Complementos Pago</h2>
+                <br>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Fecha de Pago</th>
+                            <th>Forma de Pago</th>
+                            <th>Moneda</th>
+                            <th>Monto</th>
+                        </tr>
+                        <tr>
+                            <td><%= Comprobante.Pagos.Pago.FechaPago %></td>
+                            <td><%= Comprobante.Pagos.Pago.FormaDePagoP %></td>
+                            <td><%= Comprobante.Pagos.Pago.MonedaP %></td>
+                            <td><%= Comprobante.Pagos.Pago.Monto %></td>
+                        </tr>
+                        <% for(var x = 0; x < Comprobante.Pagos.Pago.DoctoRelacionado.length; x++){ %>
+                        <tr>
+                            <th>Id Documento</th>
+                            <th>Serie</th>
+                            <th>Folio</th>
+                            <th>MonedaDR</th>
+                            <th>Moneda de Pago DR</th>
+                            <th>Número de Parcialidad</th>
+                            <th>Importe Saldo Anterior</th>
+                            <th>Importe Pagado</th>
+                            <th>Importe Saldo Insoluto</th>
+                
+                        </tr>
+                        <tr class="bordeinter">
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].IdDocumento %></td>
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].Serie %></td>
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].Folio %></td>
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].MonedaDR %></td>
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].MetodoPagoDr %></td>
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].NumParcialidad %></td>
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].ImpSaldoAnt %></td>
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].ImpPagado %></td>
+                            <td><%= Comprobante.Pagos.Pago.DoctoRelacionado[x].ImpSaldoInsoluto %></td>
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
+            <% } %>
+        </div>
+        <br>
+        <div class="">
+            <table class="left-align-table">
+                <tr>
+                    <th colspan="2" style="padding: 8px; text-align: left;">Moneda:</th>
+                    <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.Moneda %></td>
+                    <th colspan="2" style="padding: 8px; text-align: left;">Subtotal:</th>
+                    <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.SubTotal %></td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="padding: 8px; text-align: left;">Forma de pago:</th>
+                    <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.Pagos.Pago.FormaDePagoP %></td>
+                    <th colspan="2" style="padding: 8px; text-align: left;">Descuento:</th>
+                    <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.Descuento %></td>
+                </tr>
+                <% if ((Comprobante.Impuestos.Traslados.length > 0) && (Comprobante.Impuestos.Retenciones.length > 0)) { %>
+                    <tr>
+                        <th colspan="2" style="padding: 8px; text-align: left;">Método de pago:</th>
+                        <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.MetodoPago %></td>
+                        <th colspan="2" style="padding: 8px; text-align: left;">Impuestos trasladados:</th>
+                        <td colspan="2" style="padding: 8px; text-align: left;">
+                        <% for(var i = 1; i < Comprobante.Impuestos.Traslados.length; i++){ %>
+                            <%= Comprobante.Impuestos.Traslados[i].Impuesto %> <%= Comprobante.Impuestos.Traslados[i].TasaOCuota %>% <%= Comprobante.Impuestos.Traslados[i].Importe %><br/>
+                        <% } %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" style="padding: 8px; text-align: left;"></th>
+                        <td colspan="2" style="padding: 8px; text-align: left;"></td>
+                        <th colspan="2" style="padding: 8px; text-align: left;">Impuestos retenciones:</th>
+                        <td colspan="2" style="padding: 8px; text-align: left;">
+                            <% for(var i = 1; i < Comprobante.Impuestos.Retenciones.length; i++){ %>
+                                <%= Comprobante.Impuestos.Retenciones[i].Impuesto %> <%= Comprobante.Impuestos.Retenciones[i].TasaOCuota %>% <%= Comprobante.Impuestos.Retenciones[i].Importe %><br/>
+                            <% } %>
+                        </td>
+                    </tr>
+                    
+                <% } else {%>
+                    <tr>
+                        <th colspan="2" style="padding: 8px; text-align: left;">Método de pago:</th>
+                        <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.metodoDePago %></td>
+                        <% if (Comprobante.Impuestos.Traslados > 0) { %>
+                            <th colspan="2" style="padding: 8px; text-align: left;">Impuestos trasladados:</th>
+                            <td colspan="2" style="padding: 8px; text-align: left;">
+                                <% for(var i = 1; i < Comprobante.Impuestos.Traslados.length; i++){ %>
+                                    <%= Comprobante.Impuestos.Traslados[i].Impuesto %> <%= Comprobante.Impuestos.Traslados[i].TasaOCuota %>% <%= Comprobante.Impuestos.Traslados[i].Importe %><br/>
+                                <% } %>
+                            </td>
+                        <% } %>
+                        <% if (Comprobante.Impuestos.Retenciones.length > 0) { %>
+                            <th colspan="2" style="padding: 8px; text-align: left;">Impuestos retenciones:</th>
+                            <td colspan="2" style="padding: 8px; text-align: left;">
+                                <% for(var i = 1; i < Comprobante.Impuestos.Retenciones.length; i++){ %>
+                                    <%= Comprobante.Impuestos.Retenciones[i].Impuesto %> <%= Comprobante.Impuestos.Retenciones[i].TasaOCuota %>% <%= Comprobante.Impuestos.Retenciones[i].Importe %><br/>
+                                <% } %>
+                            </td>
+                        <% } %>
+                    </tr>
+                <% } %>
+                
+                <tr>
+                    <th colspan="2" style="padding: 8px; text-align: left;"></th>
+                    <td colspan="2" style="padding: 8px; text-align: left;"></td>
+                    <th colspan="2" style="padding: 8px; text-align: left;">Total:</th>
+                    <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.Total %></td>
+                </tr>
+            </table>
+            
+        </div>
+        <br>
+        <div class="">
+            <table class="left-align-table">
+                <tr>
+                    <td colspan="2" style="padding: 8px; text-align: left; font-weight: bold;">RFC emisor:</td>
+                    <td colspan="2" style="padding: 8px; text-align: left; "><%= Comprobante.Emisor.Rfc %></td>
+                    <td colspan="2" style="padding: 8px; text-align: right; font-weight: bold;">Folio fiscal:</td>
+                    <td colspan="2" style="padding: 8px; text-align: right;"><%= Comprobante.Complemento.TimbreFiscalDigital.UUID %></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="left-align-table-container">
+            <table class="left-align-table">
+                <tr>
+                    <th colspan="2" style="padding: 8px;">Sello digital del CFDI:</th>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 8px;"><%= Comprobante.Complemento.TimbreFiscalDigital.SelloCFD %></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div>
+            <table class="left-align-table">
+                <tr>
+                    <th colspan="2" style="padding: 8px;">Sello digital del SAT:</th>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 8px;"><%= Comprobante.Complemento.TimbreFiscalDigital.SelloSAT %></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div>
+            <table class="left-align-table">
+                <tr>
+                    <th rowspan="2" colspan="2" style="width: 20%;"><img style="width: 100%;" src="<%= Comprobante.qr %>" alt="" /></th>
+                    <th colspan="2" style="padding: 8px;">Cadena Original del complemento de certificación digital del SAT:</th>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 8px;"><%= Comprobante?.CadenaOriginalSAT %></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <br>
+        <div>
+            <table class="left-align-table">
+                <tr>
+                    <th colspan="2" style="padding: 8px; text-align: left;">RFC del proveedor de certificación:</th>
+                    <th></th>
+                    <td style="padding: 8px; text-align: left;"><%= Comprobante.TimbreFiscalDigital.RfcProvCertif %></td>
+                    <th colspan="2" style="padding: 8px; text-align: left;">Fecha y hora de certificación:</th>
+                    <th></th>
+                    <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.Complemento.TimbreFiscalDigital.FechaTimbrado %></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="padding: 8px; text-align: left;">No. de serie del certificado SAT:</th>
+                    <th></th>
+                    <td colspan="2" style="padding: 8px; text-align: left;"><%= Comprobante.Complemento.TimbreFiscalDigital.NoCertificadoSAT %></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
